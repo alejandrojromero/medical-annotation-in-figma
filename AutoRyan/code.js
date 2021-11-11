@@ -188,13 +188,12 @@ function hexToRGB(h) {
 
 
 
+
       console.log("grouped")
       console.log(allSelectedNodes)
 
-
-      let node = newGroup;
-      node.exportAsync({format: 'PDF'}).then(res => console.log(String.fromCharCode.apply(null, res))).catch(err => console.error(err));
-      
+      var selectionArray = [newGroup]
+      figma.currentPage.selection = selectionArray;
 
     //  figma.currentPage.selection = nodes;
       //figma.viewport.scrollAndZoomIntoView(nodes);

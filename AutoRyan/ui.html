@@ -2,64 +2,96 @@
 
 </head>
 <span class="dot" id='userToken'></span>
-<h2 id = 'name' style="font-size: 20px"> Test</h2>
+<h2 id='name' style="font-size: 20px"> Test</h2>
 
 
-<style> .dot {
-  height: 25px;
-  width: 25px;
-  font-family: Helvetica, sans-serif;
-  background-color: #bbb;
-  color: white;
-  border-radius: 15%;
-  display: inline-block;
-  height: 20px; 
-  padding: 4px 3px 0 3px;
-  text-align: center;
-}</style>
+<style>
+  .dot {
+    height: 25px;
+    width: 25px;
+    font-family: Helvetica, sans-serif;
+    background-color: #bbb;
+    color: white;
+    border-radius: 15%;
+    display: inline-block;
+    height: 20px;
+    padding: 4px 3px 0 3px;
+    text-align: center;
+  }
+
+  .importButton {
+    border-radius: 5px;
+    background-color: #54ADFF;
+    border: 1px solid #54ADFF;
+    color: white;
+    padding: 5px;
+    width: 25%;
+    font-weight: bold;
+
+  }
+
+  .exportButton {
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #54ADFF;
+    color: #54ADFF;
+    padding: 5px;
+    width: 25%;
+    font-weight: bold;
+  }
+
+
+  button:hover {
+    background-color: lightskyblue;
+  }
+
+  .exportButton:hover{
+    color: white;
+  }
+
+</style>
 
 
 
 
+<p style="font-family: Helvetica, sans-serif; color: grey">Load Directory  <input id="count" placeholder="Search"></p>
+<button id="cancel" class="importButton">Import</button>
+<button id="create" class="exportButton"> Export </button>
 
-<p>Count: <input id="count" value="5"></p>
-<button id="create">Create</button>
-<button id="cancel">Cancel</button>
 
-<script type="text/typescript" 
-  src="./code.ts">
+<script type="text/typescript" src="./code.ts">
 </script>
 
 <script>
 
- onmessage = (event) => {
-   document.getElementById('name').innerHTML = "Welcome, " + event.data.pluginMessage.username;
-   document.getElementById('name').style.fontFamily = 'Helvetica, sans-serif';
-   document.getElementById('userToken').style.backgroundColor = event.data.pluginMessage.userColor;
-   document.getElementById('userToken').innerHTML = event.data.pluginMessage.username.charAt(0);
- }
+  onmessage = (event) => {
+    
+    document.getElementById('name').innerHTML = "Welcome, " + event.data.pluginMessage.username;
+    document.getElementById('name').style.fontFamily = 'Helvetica, sans-serif';
+    document.getElementById('userToken').style.backgroundColor = event.data.pluginMessage.userColor;
+    document.getElementById('userToken').innerHTML = event.data.pluginMessage.username.charAt(0);
+    
+  }
 
-//  onmessage = (event) => {
-//    document.getElementById('userToken').style.backgroundColor = "Welcome " + event.data.pluginMessage.username
-//  }
+  //  onmessage = (event) => {
+  //    document.getElementById('userToken').style.backgroundColor = "Welcome " + event.data.pluginMessage.username
+  //  }
 
-document.getElementById('create').onclick = () => {
-  const textbox = document.getElementById('count');
-  const count = parseInt(textbox.value, 10);
-  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
-}
+  document.getElementById('create').onclick = () => {
+    const textbox = document.getElementById('count');
+    const count = parseInt(textbox.value, 10);
+    parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
+  }
 
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
-}
+  document.getElementById('cancel').onclick = () => {
+    parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+  }
 
 
 </script>
 
-<script type = "text/javascript" src="./code.js">
-console.log(username)
-    document.getElementById('name').InnerHTML = username;
-    
-</script>  
+<script type="text/javascript" src="./code.js">
+  console.log(username)
+  document.getElementById('name').InnerHTML = username;
 
-
+</script>
