@@ -1,8 +1,27 @@
 <head>
 
 </head>
+<span class="dot" id='userToken'></span>
+<h2 id = 'name' style="font-size: 20px"> Test</h2>
 
-<h2 id = 'name'> Test</h2>
+
+<style> .dot {
+  height: 25px;
+  width: 25px;
+  font-family: Helvetica, sans-serif;
+  background-color: #bbb;
+  color: white;
+  border-radius: 15%;
+  display: inline-block;
+  height: 20px; 
+  padding: 4px 3px 0 3px;
+  text-align: center;
+}</style>
+
+
+
+
+
 <p>Count: <input id="count" value="5"></p>
 <button id="create">Create</button>
 <button id="cancel">Cancel</button>
@@ -14,8 +33,15 @@
 <script>
 
  onmessage = (event) => {
-   document.getElementById('name').innerHTML = "Welcome " + event.data.pluginMessage.username
+   document.getElementById('name').innerHTML = "Welcome, " + event.data.pluginMessage.username;
+   document.getElementById('name').style.fontFamily = 'Helvetica, sans-serif';
+   document.getElementById('userToken').style.backgroundColor = event.data.pluginMessage.userColor;
+   document.getElementById('userToken').innerHTML = event.data.pluginMessage.username.charAt(0);
  }
+
+//  onmessage = (event) => {
+//    document.getElementById('userToken').style.backgroundColor = "Welcome " + event.data.pluginMessage.username
+//  }
 
 document.getElementById('create').onclick = () => {
   const textbox = document.getElementById('count');
