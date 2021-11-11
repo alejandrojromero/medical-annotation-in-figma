@@ -27,7 +27,7 @@ setInterval( function(){
 
        annotations.push(newSelection)
 
-       figma.loadFontAsync({ family: "Roboto", style: "Regular" })
+       //figma.loadFontAsync({ family: "Roboto", style: "Regular" })
        const label = figma.createText();
 
        var today = new Date();
