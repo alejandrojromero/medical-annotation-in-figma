@@ -1,0 +1,39 @@
+<head>
+
+</head>
+
+<h2 id = 'name'> Test</h2>
+<p>Count: <input id="count" value="5"></p>
+<button id="create">Create</button>
+<button id="cancel">Cancel</button>
+
+<script type="text/typescript" 
+  src="./code.ts">
+</script>
+
+<script>
+
+ onmessage = (event) => {
+   document.getElementById('name').innerHTML = "Welcome " + event.data.pluginMessage.username
+ }
+
+document.getElementById('create').onclick = () => {
+  const textbox = document.getElementById('count');
+  const count = parseInt(textbox.value, 10);
+  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
+}
+
+document.getElementById('cancel').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+}
+
+
+</script>
+
+<script type = "text/javascript" src="./code.js">
+console.log(username)
+    document.getElementById('name').InnerHTML = username;
+    
+</script>  
+
+
